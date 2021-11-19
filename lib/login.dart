@@ -8,72 +8,25 @@ class Login extends StatelessWidget {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children:  [
-          const Card(
-            color: Color(0xffFAFAFA),
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: ListTile(
-              leading: Icon(
+        children: [
+          TextFields(
+              icons: const Icon(
                 Icons.person,
                 size: 30,
                 color: Colors.black,
               ),
-              title: TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: null,
-                decoration: InputDecoration(
-                  hintText: 'Enter a value',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 3.0),
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                ),
-              ),
+              pass: false),
+          TextFields(
+            icons: const Icon(
+              Icons.password_rounded,
+              size: 30,
+              color: Colors.black,
             ),
+            pass: true,
           ),
-          const Card(
-            color: Color(0xffFAFAFA),
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: ListTile(
-              leading: Icon(
-                Icons.password_rounded,
-                size: 30,
-                color: Colors.black,
-              ),
-              title: TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: null,
-                decoration: InputDecoration(
-                  hintText: 'Enter a value',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 3.0),
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                ),
-              ),
-            ),
+          const SizedBox(
+            height: 30,
           ),
-          SizedBox(height: 30,),
           ElevatedButton(
             onPressed: () {
               null;
@@ -99,7 +52,7 @@ class Login extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-             null;
+              null;
             },
             child: const Text(
               "Already registered!!! Login",
@@ -111,6 +64,51 @@ class Login extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class TextFields extends StatelessWidget {
+  final Icon icons;
+  final bool pass;
+  TextFields(
+      {this.pass = false,
+      this.icons = const Icon(
+        Icons.person,
+        size: 30,
+        color: Colors.black,
+      )});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Card(
+      color: Color(0xffFAFAFA),
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: ListTile(
+        leading: icons,
+        title: TextField(
+          keyboardType: TextInputType.emailAddress,
+          textAlign: TextAlign.center,
+          obscureText: pass,
+          onChanged: null,
+          decoration: const InputDecoration(
+            hintText: 'Enter a value',
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.black, width: 2.0),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.black, width: 3.0),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+          ),
+        ),
       ),
     );
   }
